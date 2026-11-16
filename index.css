@@ -1,0 +1,48 @@
+@import 'tailwindcss';
+
+/* Paleta pensada para uso a pleno sol: fondo oscuro, texto y acentos de alto
+   contraste. Se define como tema único (no depende de prefers-color-scheme)
+   porque en la banda, con el celular en la mano, se prioriza legibilidad
+   consistente por sobre respetar el modo claro/oscuro del sistema. */
+@theme {
+  --color-cancha-bg: #0b1120;
+  --color-cancha-surface: #151d30;
+  --color-cancha-surface-2: #1e2740;
+  --color-cancha-border: #2c3752;
+  --color-cancha-text: #f1f5f9;
+  --color-cancha-text-dim: #94a3b8;
+  --color-cancha-accent: #4ade80;
+  --color-cancha-accent-dim: #14532d;
+  --color-cancha-propio: #3987e5;
+  --color-cancha-rival: #e66767;
+  --color-cancha-alerta: #facc15;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cancha-bg);
+  color: var(--color-cancha-text);
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  /* Evita el zoom accidental por doble tap al tocar botones rápido en banda. */
+  touch-action: manipulation;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  /* Respeta notch/safe-area en instalación como PWA a pantalla completa. */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Targets táctiles grandes por defecto para botones. */
+button {
+  min-height: 44px;
+  min-width: 44px;
+}
